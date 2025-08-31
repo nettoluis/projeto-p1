@@ -58,3 +58,5 @@ class Inimigo:
             self.x -= self.velocidade
         if alvo.y < self.y:
             self.y -= self.velocidade
+
+
