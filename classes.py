@@ -10,7 +10,7 @@ class Jogador:
         
         self.largura = 32
         self.altura = 32
-        self.cor = (255, 255, 255)
+        self.cor = (255, 141, 161)
         self.rect = pygame.Rect(self.x, self.y, self.largura, self.altura)
 
     
@@ -37,17 +37,24 @@ class Inimigo:
         self.y = y
         self.dano = 20
         self.velocidade = 0.6
-        self.image = pygame.image.load('assets/mobDir.png').convert_alpha()
-        self.image = pygame.transform.scale(self.image, (64, 64))
-        self.rect = self.image.get_rect(center=(x, y))
+
+        self.largura = 32
+        self.altura = 32
+        self.cor = (255, 255, 255)
+        self.rect = pygame.Rect(self.x, self.y, self.largura, self.altura)
+
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        self.rect.topleft = (self.x, self.y)
+        pygame.draw.rect(screen, self.cor, self.rect)
 
 
     def move(self, alvo):
-        dx, dy = alvo.rect.x - self.rect.x, alvo.rect.y - self.rect.y
-        dist = (dx ** 2 + dy ** 2) ** 0.5
-        if dist > 0:
-            self.rect.x += self.velocidade * dx / dist
-            self.rect.y += self.velocidade * dy / dist
+        if alvo.x > self.x:
+            self.x += self.velocidade
+        if alvo.y > self.y:
+            self.y += self.velocidade
+        if alvo.x < self.x:
+            self.x -= self.velocidade
+        if alvo.y < self.y:
+            self.y -= self.velocidade
