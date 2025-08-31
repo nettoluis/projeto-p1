@@ -1,5 +1,7 @@
 import pygame
-from jogador import Jogador
+from classes import Jogador
+from classes import Inimigo
+
 
 def criarJanela():
     pygame.init()
@@ -11,6 +13,7 @@ def criarJanela():
     cor_fundo = (0, 0, 0)
 
     jogador = Jogador(largura / 2, altura / 2)
+    inimigo1 = Inimigo(largura / 108, altura / 2)
 
     projeteis = []
     running = True
@@ -21,8 +24,10 @@ def criarJanela():
 
         keys = pygame.key.get_pressed()
         jogador.move(keys)
+        inimigo1.move(jogador)
         screen.fill(cor_fundo)
         jogador.draw(screen)
+        inimigo1.draw(screen)
         pygame.display.flip()
 
     pygame.quit()

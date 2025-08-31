@@ -28,3 +28,32 @@ class Jogador:
             self.y -= self.velocidade
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.y += self.velocidade
+
+
+class Inimigo:
+    def __init__(self, x, y,):
+        self.vida = 5
+        self.x = x
+        self.y = y
+        self.dano = 20
+        self.velocidade = 0.10
+
+        self.largura = 16
+        self.altura = 16
+        self.cor = (0, 255, 255)
+        self.rect = pygame.Rect(self.x, self.y, self.largura, self.altura)
+
+
+    def draw(self, screen):
+        self.rect.topleft = (self.x, self.y)
+        pygame.draw.rect(screen, self.cor, self.rect)    
+
+    def move(self, jogador):
+        if jogador.x > self.x:
+            self.x += self.velocidade
+        if jogador.y > self.y:
+            self.y += self.velocidade
+        if jogador.x < self.x:
+            self.x -= self.velocidade
+        if jogador.y < self.y:
+            self.y -= self.velocidade
