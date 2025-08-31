@@ -10,7 +10,7 @@ def criarJanela():
     screen = pygame.display.set_mode((largura, altura))
     pygame.display.set_caption("The Big Arrow")
 
-    cor_fundo = (0, 0, 0)
+    cor_fundo = (127, 127, 255)
 
     jogador = Jogador(largura / 2, altura / 2)
     inimigo1 = Inimigo(largura / 108, altura / 2)
