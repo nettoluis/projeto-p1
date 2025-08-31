@@ -29,7 +29,7 @@ class Jogador:
         if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.y += self.velocidade
 
-
+# Teste de modificação para ver o push
 class Inimigo:
     def __init__(self, x, y,):
         self.vida = 5
